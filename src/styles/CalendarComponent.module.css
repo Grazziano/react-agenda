@@ -1,0 +1,12 @@
+.calendarContainer {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.selectedDate {
+  text-align: center;
+  font-size: 1rem;
+  margin-top: 10px;
+  color: #555;
+}

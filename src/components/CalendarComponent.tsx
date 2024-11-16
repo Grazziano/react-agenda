@@ -1,5 +1,6 @@
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import styles from '../styles/CalendarComponent.module.css';
 
 interface CalendarProps {
   selectedDate: Date | null;
@@ -11,10 +12,12 @@ export default function CalendarComponent({
   setSelectedDate,
 }: CalendarProps) {
   return (
-    <div>
+    <div className={styles.calendarContainer}>
       <Calendar onClickDay={setSelectedDate} />
       {selectedDate && (
-        <p>Data selecionada: {selectedDate.toLocaleDateString('pt-BR')}</p>
+        <p className={styles.selectedDate}>
+          Data selecionada: {selectedDate.toLocaleDateString('pt-BR')}
+        </p>
       )}
     </div>
   );

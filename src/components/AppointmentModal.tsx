@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
+import styles from '../styles/AppointmentModal.module.css';
 
 interface AppointmentModalProps {
   selectedDate: Date;
@@ -30,29 +31,41 @@ export default function AppointmentModal({
   };
 
   return (
-    <Modal isOpen={true} onRequestClose={closeModal}>
-      <h2>Novo Compromisso</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
+    <Modal
+      isOpen={true}
+      onRequestClose={closeModal}
+      className={styles.modalContent}
+    >
+      <h2 className={styles.modalHeader}>Novo Compromisso</h2>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <label className={styles.label}>
           Hora:
           <input
             type="time"
             value={time}
             onChange={(e) => setTime(e.target.value)}
             required
+            className={styles.input}
           />
         </label>
-        <label>
+        <label className={styles.label}>
           Descrição:
           <input
             type="text"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
+            className={styles.input}
           />
         </label>
-        <button type="submit">Adicionar</button>
-        <button type="button" onClick={closeModal}>
+        <button type="submit" className={styles.button}>
+          Adicionar
+        </button>
+        <button
+          type="button"
+          onClick={closeModal}
+          className={`${styles.button} ${styles.cancelButton}`}
+        >
           Cancelar
         </button>
       </form>

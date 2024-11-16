@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import CalendarComponent from './components/CalendarComponent';
 import AppointmentModal from './components/AppointmentModal';
-import './App.css';
+import styles from './styles/App.module.css';
 
 interface Appointment {
   date: string;
@@ -18,8 +18,8 @@ function App() {
   };
 
   return (
-    <div>
-      <h1>Agenda</h1>
+    <div className={styles.container}>
+      <h1 className={styles.title}>Agenda</h1>
       <CalendarComponent
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
@@ -31,12 +31,14 @@ function App() {
           closeModal={() => setSelectedDate(null)}
         />
       )}
-      <div>
+      <div className={styles.appointments}>
         <h2>Compromissos</h2>
         {appointments.map((appointment, index) => (
-          <div key={index}>
-            <strong>{appointment.date}</strong>: {appointment.time} -{' '}
-            {appointment.description}
+          <div key={index} className={styles.appointmentItem}>
+            <strong className={styles.appointmentDate}>
+              {appointment.date}
+            </strong>
+            : {appointment.time} - {appointment.description}
           </div>
         ))}
       </div>
